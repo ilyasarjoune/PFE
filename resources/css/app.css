@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+*{
+  font-family: inter ,sans-serif;
+
+}
+.feed-container{
+    display: flex;
+    
+    
+}
+.interMenu{
+    height: 90vh;
+    overflow: auto;
+    margin-left: 140px;
+    width: 400px;
+    box-sizing: border-box;
+    background-color: rgb(233, 233, 233);
+}
+.interDesc{
+    overflow: auto;
+    height: 90vh;
+    width: 100vh;
+    background-color: hsl(0, 0%, 100%);
+    padding: 30px;
+}
+.interDesc h2{
+    margin-left: 0;
+    font-weight: 800;
+    text-shadow: 1px 1px 3px hwb(0 44% 55%);
+    text-decoration: underline ;
+    margin-bottom: 20px;
+
+}
+
+.job-item {
+    
+    cursor: pointer;
+    padding: 10px;  
+   border: none;
+    
+    background-color: #ffffff;
+    
+    box-shadow: 0 0 2px;
+}
+.job-item:hover{
+    box-shadow: 0 0 5px #bac1c9;
+    background-color: hsl(0, 0%, 92%);
+}
+.job-item h4{
+font-weight: 600;
+
+color: #033c7c;
+}
+.interDesc p{
+    font-size: 17px;
+    }
+strong{
+    font-weight: bold;
+    font-size: larger;
+    text-decoration: underline;
+
+    }
+
+.job-item.selected{
+ background-color:  #f5f5f5;
+}
+
+.btns{
+    
+    
+    
+    margin-left: 25%;
+}
+
+#root{
+    background-color: #ffffff;
+
+}
+.logo{
+    height: 40px;
+  width: auto;
+}
