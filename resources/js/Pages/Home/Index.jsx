@@ -4,17 +4,19 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 
 export default function Index({ auth, internships }) {
   const [selectedInternship, setSelectedInternship] = useState(null);
+  const searchresult = internships.length;
 
   const handleSelectInternship = (internship) => {
     setSelectedInternship(internship);
   };
 
   return (
-    <AuthenticatedLayout user={auth.user}>
+    <AuthenticatedLayout user={auth.user}
+    header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">search result : {searchresult}</h2>}>
       <Head title="Internships" />
-      <div className="py-12">
-        <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-          <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+      <div className="py-0">
+        <div className="max-w-5xl mx-auto sm:px-6 lg:px-8">
+          <div className="bg-white overflow-hidden shadow-sm ">
             <div className='feed-container'>
               <div className='interMenu'>
                 {internships.map((internship, index) => (
@@ -24,8 +26,9 @@ export default function Index({ auth, internships }) {
                     onClick={() => handleSelectInternship(internship)}
                   >
                     <h4>{internship.title}</h4>
-                    <p>{internship.responsibilities}</p>
+                    <p>{internship.company}</p>
                     <p>{internship.location}</p>
+                    <p>{internship.date}</p>
                   </div>
                 ))}
               </div>
@@ -33,12 +36,12 @@ export default function Index({ auth, internships }) {
                 {selectedInternship ? (
                   <>
                     <h2>{selectedInternship.title}</h2>
-                    <p><strong>Description:</strong> {selectedInternship.description}</p>
-                    <p><strong>Responsibilities:</strong> {selectedInternship.responsibilities}</p>
-                    <p><strong>Skills:</strong> {selectedInternship.skills}</p>
+                    <p><strong>Company:</strong> {selectedInternship.company}</p>
+                    <p><strong>Location:</strong> {selectedInternship.location}</p>
+                    <p><strong>Date:</strong> {selectedInternship.date}</p>
                     <p><strong>Location:</strong> {selectedInternship.location}</p>
                     <div className='btns'>
-                      <button>Apply</button>
+                      <a href={selectedInternship.link} >Apply</a>
                       <button>Save</button>
                     </div>
                   </>

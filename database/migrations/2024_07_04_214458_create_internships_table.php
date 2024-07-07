@@ -18,6 +18,7 @@ return new class extends Migration
         $table->string('location');
         $table->string('date');
         $table->string('domain');
+        $table->string('image_url');
         $table->string('link', 500)->unique(); // Increase length to 500 characters or more as needed
         $table->timestamps();
         $table->unique(['title', 'company']);
