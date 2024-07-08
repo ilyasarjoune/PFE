@@ -40,7 +40,7 @@ class StoreWebScrapingDataController extends Controller
                         'date' => $internship['date'],
                         'link' => $internship['link'],
                         'domain' => $internship['domain'],
-                        'image_url' => $internship['image_url'],
+                        'description' => $internship['description'],
                     ]);
                 } else {
                     // Handle duplicate entry scenario if needed

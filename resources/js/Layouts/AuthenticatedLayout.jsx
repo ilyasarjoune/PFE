@@ -24,17 +24,21 @@ export default function Authenticated({ user, header, children }) {
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 
                                 <NavLink href={route('internship.index')} active={route().current('internship.index')}>
-                                    interships
+                                   Internships
                                 </NavLink>
                                 <NavLink href={route('dashboard')} active={route().current('jj')}>
-                                    company reviews
+                                    Company Reviews
                                 </NavLink>
                             </div>
                         </div>
+ 
 
+
+
+ 
                         <div className="hidden sm:flex sm:items-center sm:ms-6"
                         >
-                            <a className='nav-link' href='/notification'>
+                            <a className='nav-link noti' href='/notification'>
         <i className="fa-solid fa-bell"></i> Notification
         </a>
                             <div className="ms-3 relative">
@@ -46,7 +50,7 @@ export default function Authenticated({ user, header, children }) {
                                                 type="button"
                                                 className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
                                             >
-                                                {user.name}
+                                                { user.name}
 
                                                 <svg
                                                     className="ms-2 -me-0.5 h-4 w-4"

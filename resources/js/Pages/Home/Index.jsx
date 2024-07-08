@@ -12,13 +12,16 @@ export default function Index({ auth, internships }) {
 
   return (
     <AuthenticatedLayout user={auth.user}
-    header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">search result : {searchresult}</h2>}>
+    >
       <Head title="Internships" />
       <div className="py-0">
         <div className="max-w-5xl mx-auto sm:px-6 lg:px-8">
           <div className="bg-white overflow-hidden shadow-sm ">
             <div className='feed-container'>
               <div className='interMenu'>
+                <div className='searchresult'>
+                  <h3>Result : {searchresult}</h3>
+                </div>
                 {internships.map((internship, index) => (
                   <div
                     key={index}
@@ -35,14 +38,23 @@ export default function Index({ auth, internships }) {
               <div className='interDesc'>
                 {selectedInternship ? (
                   <>
-                    <h2>{selectedInternship.title}</h2>
-                    <p><strong>Company:</strong> {selectedInternship.company}</p>
-                    <p><strong>Location:</strong> {selectedInternship.location}</p>
-                    <p><strong>Date:</strong> {selectedInternship.date}</p>
-                    <p><strong>Location:</strong> {selectedInternship.location}</p>
+                  <div className='inter-details'>
+                    <p>{selectedInternship.company}</p>
+                    <p> {selectedInternship.title}</p>
+                    <p><i class="fa-solid fa-location-dot"></i> {selectedInternship.location}</p>
+                    <p> <i class="fa-solid fa-calendar-days"></i> {selectedInternship.date}</p>
+                    
+                    <p>Domain : {selectedInternship.domain} </p>
+                    </div>
+                    <hr />
+                    <div className='more-details'> 
+                      
+                      <p><h1><i class="fa-solid fa-circle-info"></i> Details :</h1>{selectedInternship.description}</p>
+                    </div>
+                    <hr />
                     <div className='btns'>
-                      <a href={selectedInternship.link} >Apply</a>
-                      <button>Save</button>
+                      <a href={selectedInternship.link} target='_blank'><span> Apply <i class="fa-solid fa-arrow-up-right-from-square"></i></span></a>
+                      <a><i class="fa-regular fa-bookmark"></i> Save</a>
                     </div>
                   </>
                 ) : (

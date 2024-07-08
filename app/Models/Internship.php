@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Internship extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'company', 'location', 'date', 'link' , 'domain', 'image_url'];
+    protected $fillable = ['title', 'company', 'location', 'date', 'link' , 'domain', 'description' , 'applies'];
     protected $guarded = ['id'];
 
     public $timestamps = true;

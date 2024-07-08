@@ -60,15 +60,20 @@ color: #0077ff;
     font-weight:bold;
     font-size: 16px;
     
-    color: #0077ff;
+    color: #1E86FF;
     }
 .job-item p:nth-child(2){
-    font-weight: bold;
+    font-weight: 500;
     font-size: 15px;
     margin-bottom: 5px;
     
     color: black;
     }
+    .job-item p:nth-child(3){
+       
+        font-size: 13px;
+        color: grey;
+        }
     .job-item p:nth-child(4){
         font-weight: 100;
         font-size: 12px;
@@ -76,9 +81,28 @@ color: #0077ff;
         justify-content: end;
         color: rgba(0, 0, 0, 0.563);
         }
-.interDesc p{
+.interDesc p:nth-child(1){
+    font-weight: 500;
     font-size: 17px;
     }
+    .interDesc p:nth-child(2){
+        font-weight: bold;
+        font-size: 25px;
+        }
+        .interDesc p:nth-child(3){
+            color: grey;
+            font-size: 13px;
+            }
+            .interDesc p:nth-child(4){
+                color: grey;
+            
+                font-size: 13px;
+                }
+                .interDesc p:nth-child(5){
+                    color: grey;
+                
+                    font-size: 13px;
+                    }
 strong{
     font-weight: bold;
     font-size: larger;
@@ -88,21 +112,91 @@ strong{
 
 .job-item.selected{
  background-color:  hwb(177 91% 2% / 0.215);
- border-left: 3px solid #9CDBA6;
+ border-left: 3px solid tomato;
 }
-
 .btns{
     
-    
-    
-    margin-left: 25%;
+    margin-top: 40px;
 }
-
-#root{
+.btns a{
+    
+    
+    border-radius: 25px;
+    
+    margin: 10px;
+    
+    padding :15px 25px;
+    font-weight: bold;
+    
+    
+}
+.btns a:nth-child(1){
+    
+    border: 1px solid #1E86FF ;
+    background-color: #1E86FF;
+    color: #ffffff;
+    transition: 0.5s;
+}
+.btns a:nth-child(1):hover{
     background-color: #ffffff;
-
+    color: #1E86FF;
+    transform: scaleX(2);
+    box-shadow: 1px 1px 2px rgb(58, 189, 255);
 }
+
+.btns a:nth-child(2){
+    
+    border: 1px solid black ;
+    color: black;
+    transition: 0.5s;
+    
+    cursor: pointer;
+    
+    
+    
+}
+.btns a:nth-child(2):hover{
+    background-color: black;
+    color: #ffffff;
+    transform: scaleX(2);
+    box-shadow: 1px 2px 3px gray;
+}
+
+
 .logo{
     height: 40px;
   width: auto;
 }
+.searchresult{
+   position: sticky;
+   top: 0;
+   padding: 17px;
+   background-color: #77E4C8;
+}
+.searchresult h3{
+    font-weight: bold;
+    color: #ffffff;
+ }
+ .inter-details{
+    padding: 20px;
+    margin-bottom: 20px;
+ }
+ .more-details{
+    padding: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+ }
+ .more-details h1 {
+    font-size: large;
+    margin-bottom: 5px;
+    font-weight: 600;
+ }
+ .nav-link{
+    color: rgb(117, 117, 117);
+    font-size: 14px;
+    transition: 0.5s;
+ }
+ .nav-link:hover{
+    color: rgba(0, 0, 0, 0.781);
+    
+ }
