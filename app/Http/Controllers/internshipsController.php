@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Http\Request;
 use App\Models\Internship;
 use App\Http\Requests\StoreInternshipRequest;
 use App\Http\Requests\UpdateInternshipRequest;
@@ -21,10 +21,38 @@ class internshipsController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function save(Request $request)
+    {
+        $internshipId = $request->input('internship_id');
+        $user = $request->user();
+
+        $user->savedInternships()->attach($internshipId);
+
+        return response()->json(['message' => 'Internship saved successfully']);
+    }
+    public function saved(Request $request)
+    {
+        $user = $request->user();
+        $savedInternships = $user->savedInternships;
+
+        return Inertia::render('Home/Saved', [
+            'savedInternships' => $savedInternships
+        ]);
+    }
+    public function unsave(Request $request)
+    {
+        $internshipId = $request->input('internship_id');
+        $user = $request->user();
+
+        $user->savedInternships()->detach($internshipId);
+
+        return response()->json(['message' => 'Internship unsaved successfully']);
+    }
+     public function create()
     {
         //
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -64,5 +92,27 @@ class internshipsController extends Controller
     public function destroy(Internship $internship)
     {
         //
+    }
+    public function search(Request $request)
+    {
+        $query = Internship::query();
+    
+        if ($request->filled('query')) {
+            $search = $request->input('query');
+            $query->where(function($q) use ($search) {
+                $q->where('title', 'like', "%$search%")
+                  ->orWhere('domain', 'like', "%$search%")
+                  ->orWhere('location', 'like', "%$search%");
+            });
+        }
+    
+        $internships = $query->get();
+        $noResults = $internships->isEmpty();
+    
+        return Inertia::render('Home/Index', [
+            'internships' => $internships,
+            'search' => $request->only('query'),
+            'noResults' => $noResults,
+        ]);
     }
 }

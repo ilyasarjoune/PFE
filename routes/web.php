@@ -17,7 +17,15 @@ Route::get('/', function () {
 });
  Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', fn () => Inertia::render('Dashboard'))->name('dashboard');
+
     Route::resource('internship',internshipsController::class);
+    Route::post('/internships/save', [InternshipsController::class, 'save'])->name('internships.save');
+    Route::get('/saved-internships', [InternshipsController::class, 'saved'])->name('internships.saved');
+    Route::post('/internships/unsave', [InternshipsController::class, 'unsave'])->name('internships.unsave');
+    Route::get('/internships/search', [InternshipsController::class, 'search'])->name('internships.search');
+
+
+
 });
 
 

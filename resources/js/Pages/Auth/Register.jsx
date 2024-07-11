@@ -1,9 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import GuestLayout from '@/Layouts/GuestLayout';
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
+import SelectInput from '@/Components/SelectInput'; // Import the newly created SelectInput component
 import { Head, Link, useForm } from '@inertiajs/react';
 
 export default function Register() {
@@ -12,18 +13,32 @@ export default function Register() {
         email: '',
         password: '',
         password_confirmation: '',
+        domaines_id: '',
     });
 
+    const [domainesOptions, setDomainesOptions] = useState([]);
+
     useEffect(() => {
-        return () => {
-            reset('password', 'password_confirmation');
-        };
+        fetchDomainesOptions();
     }, []);
+
+    const fetchDomainesOptions = async () => {
+        try {
+            const response = await fetch(route('domaines.index')); // Adjust to your Laravel route for domaines
+            const data = await response.json();
+            setDomainesOptions(data); // Assuming data is an array of { id, name }
+        } catch (error) {
+            console.error('Error fetching domaines:', error);
+        }
+    };
 
     const submit = (e) => {
         e.preventDefault();
-
-        post(route('register'));
+        post(route('register'), {
+            onSuccess: () => {
+                reset('password', 'password_confirmation', 'domaines_id');
+            },
+        });
     };
 
     return (
@@ -40,7 +55,6 @@ export default function Register() {
                         value={data.name}
                         className="mt-1 block w-full"
                         autoComplete="name"
-                        isFocused={true}
                         onChange={(e) => setData('name', e.target.value)}
                         required
                     />
@@ -97,6 +111,28 @@ export default function Register() {
                     />
 
                     <InputError message={errors.password_confirmation} className="mt-2" />
+                </div>
+
+                <div className="mt-4">
+                    <InputLabel htmlFor="domaines_id" value="Domain" />
+
+                    <SelectInput
+                        id="domaines_id"
+                        name="domaines_id"
+                        value={data.domaines_id}
+                        className="mt-1 block w-full"
+                        onChange={(e) => setData('domaines_id', e.target.value)}
+                        required
+                    >
+                        <option value="">Select Domain</option>
+                        {domainesOptions.map((domain) => (
+                            <option key={domain.id} value={domain.id}>
+                                {domain.name}
+                            </option>
+                        ))}
+                    </SelectInput>
+
+                    <InputError message={errors.domaines_id} className="mt-2" />
                 </div>
 
                 <div className="flex items-center justify-end mt-4">
