@@ -1,8 +1,10 @@
+// Authenticated.jsx
 import React, { useState } from 'react';
 import ApplicationLogo from '@/Components/ApplicationLogo';
 import Dropdown from '@/Components/Dropdown';
 import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
+import Notification from '@/Components/Notification';
 import { Link } from '@inertiajs/react';
 
 export default function Authenticated({ user, header, children, noResults }) {
@@ -51,9 +53,9 @@ export default function Authenticated({ user, header, children, noResults }) {
                                     Search
                                 </button>
                             </div>
-                            <a className='nav-link noti' href='/notification'>
-                                <i className="fa-solid fa-bell"></i> Notification
-                            </a>
+
+                            <Notification userId={user.id} />
+
                             <div className="ms-3 relative">
                                 <Dropdown>
                                     <Dropdown.Trigger>

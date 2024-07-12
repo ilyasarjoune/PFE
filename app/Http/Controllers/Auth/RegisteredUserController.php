@@ -35,7 +35,8 @@ class RegisteredUserController extends Controller
             'email' => 'required|string|lowercase|email|max:255|unique:users',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'domaines_id' => 'required|exists:domaines,id', // Assuming you want to validate the domaines_id
-            'cv_path' => 'nullable|string', // Nullable CV path
+            'cv_path' => 'nullable|string',
+            'phone' => 'nullable|string', // Nullable CV path
             // Add other fields as needed
         ]);
 
@@ -45,6 +46,7 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
             'domaines_id' => $request->domaines_id,
             'cv_path' => $request->cv_path,
+            'phone' => $request->phone,
             // Add other fields as needed
         ]);
 

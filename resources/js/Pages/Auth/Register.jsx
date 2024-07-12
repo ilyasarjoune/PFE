@@ -11,6 +11,7 @@ export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
         email: '',
+        phone: '',
         password: '',
         password_confirmation: '',
         domaines_id: '',
@@ -24,7 +25,10 @@ export default function Register() {
 
     const fetchDomainesOptions = async () => {
         try {
-            const response = await fetch(route('domaines.index')); // Adjust to your Laravel route for domaines
+            const response = await fetch(route('domaines.index'));
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
             const data = await response.json();
             setDomainesOptions(data); // Assuming data is an array of { id, name }
         } catch (error) {
@@ -73,6 +77,22 @@ export default function Register() {
                         className="mt-1 block w-full"
                         autoComplete="username"
                         onChange={(e) => setData('email', e.target.value)}
+                        required
+                    />
+
+                    <InputError message={errors.email} className="mt-2" />
+                </div>
+                <div className="mt-4">
+                    <InputLabel htmlFor="phone" value="Phone" />
+
+                    <TextInput
+                        id="phone"
+                        type="phone"
+                        name="phone"
+                        value={data.phone}
+                        className="mt-1 block w-full"
+                        autoComplete="phone"
+                        onChange={(e) => setData('phone', e.target.value)}
                         required
                     />
 

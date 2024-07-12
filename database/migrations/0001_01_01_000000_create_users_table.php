@@ -18,7 +18,7 @@ $table->string('email')->unique();
 $table->timestamp('email_verified_at')->nullable();
 $table->string('password');
 $table->foreignId('domaines_id')->constrained()->onDelete('cascade');
-
+$table->string('phone')->nullable();
 $table->string('cv_path')->nullable();
 $table->rememberToken();
 $table->timestamps();

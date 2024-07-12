@@ -164,8 +164,20 @@ strong{
 
 
 .logo{
-    height: 40px;
+    height: 35px;
   width: auto;
+  border-radius: 6px;
+}
+.logoContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logoname{
+    display: flex;
+   
+    height: 25px;
+    width: auto;
 }
 .searchresult{
    position: sticky;
