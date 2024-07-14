@@ -22,7 +22,7 @@ export default function Authenticated({ user, header, children, noResults }) {
 
     return (
         <div className="min-h-screen bg-gray-100">
-            <nav className="bg-white border-b border-gray-100">
+            <nav className="navbarauth bg-white border-b border-gray-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between h-16">
                         <div className="flex">
@@ -61,8 +61,8 @@ export default function Authenticated({ user, header, children, noResults }) {
                                     <Dropdown.Trigger>
                                         <span className="inline-flex rounded-md">
                                             <button
-                                                type="button"
-                                                className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
+                                                type=""
+                                                className="inline-flex items-center px-3 py-2  border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
                                             >
                                                 {user.name}
                                                 <svg
@@ -149,6 +149,7 @@ export default function Authenticated({ user, header, children, noResults }) {
                 {noResults ? (
                     <div className="p-6 text-center text-red-500">No matching internships found.</div>
                 ) : (
+                    
                     children
                 )}
             </main>

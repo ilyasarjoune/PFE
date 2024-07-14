@@ -20,6 +20,7 @@ $table->string('password');
 $table->foreignId('domaines_id')->constrained()->onDelete('cascade');
 $table->string('phone')->nullable();
 $table->string('cv_path')->nullable();
+
 $table->rememberToken();
 $table->timestamps();
 

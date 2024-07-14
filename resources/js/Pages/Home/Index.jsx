@@ -1,11 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Head } from '@inertiajs/react';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import axios from 'axios';
 
 export default function Index({ auth, internships, noResults }) {
   const [selectedInternship, setSelectedInternship] = useState(null);
-  const searchresult = internships.length;
+  const [filterPaid, setFilterPaid] = useState(null);
+  const [filterDuration, setFilterDuration] = useState(null);
+  const [filterType, setFilterType] = useState(null);
+  const [filteredInternships, setFilteredInternships] = useState(internships);
+
+  useEffect(() => {
+    let result = internships;
+
+    if (filterPaid !== null) {
+      result = result.filter(internship => internship.paid === filterPaid);
+    }
+
+    if (filterDuration) {
+      result = result.filter(internship => internship.duration === filterDuration);
+    }
+
+    if (filterType) {
+      result = result.filter(internship => internship.type === filterType);
+    }
+
+    setFilteredInternships(result);
+  }, [filterPaid, filterDuration, filterType, internships]);
 
   const handleSelectInternship = (internship) => {
     setSelectedInternship(internship);
@@ -21,8 +42,51 @@ export default function Index({ auth, internships, noResults }) {
       });
   };
 
+  const uniqueDurations = [...new Set(internships.map(internship => internship.duration))];
+  const uniqueTypes = [...new Set(internships.map(internship => internship.type))];
+
   return (
-    <AuthenticatedLayout user={auth.user} noResults={noResults}>
+    <AuthenticatedLayout
+      user={auth.user}
+      noResults={noResults}
+      header={
+        <div className='filter'>
+          <div className="dropdown rounded-lg">
+            <button className="btn btn-outline-success rounded-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Paid
+            </button>
+            <ul className="dropdown-menu">
+              <li><a className="dropdown-item" href="#" onClick={() => setFilterPaid(null)}>All</a></li>
+              <li><a className="dropdown-item" href="#" onClick={() => setFilterPaid(1)}>Yes</a></li>
+              <li><a className="dropdown-item" href="#" onClick={() => setFilterPaid(0)}>No</a></li>
+            </ul>
+          </div>
+          <div className="dropdown rounded-lg">
+            <button className="btn btn-outline-success rounded-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Duration
+            </button>
+            <ul className="dropdown-menu">
+              <li><a className="dropdown-item" href="#" onClick={() => setFilterDuration(null)}>All</a></li>
+              {uniqueDurations.map((duration, index) => (
+                <li key={index}><a className="dropdown-item" href="#" onClick={() => setFilterDuration(duration)}>{duration}</a></li>
+              ))}
+            </ul>
+          </div>
+          <div className="dropdown rounded-lg">
+            <button className="btn btn-outline-success rounded-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Type
+            </button>
+            <ul className="dropdown-menu">
+              <li><a className="dropdown-item" href="#" onClick={() => setFilterType(null)}>All</a></li>
+              {uniqueTypes.map((type, index) => (
+                <li key={index}><a className="dropdown-item" href="#" onClick={() => setFilterType(type)}>{type}</a></li>
+              ))}
+            </ul>
+          </div>
+          <hr className="vertical-hr"></hr>
+        </div>
+      }
+    >
       <Head title="Internships" />
       <div className="py-0">
         <div className="max-w-5xl mx-auto sm:px-6 lg:px-8">
@@ -34,9 +98,9 @@ export default function Index({ auth, internships, noResults }) {
                 ) : (
                   <>
                     <div className="searchresult">
-                      <h3>Result: {searchresult}</h3>
+                      <h3>Result: {filteredInternships.length}</h3>
                     </div>
-                    {internships.map((internship, index) => (
+                    {filteredInternships.map((internship, index) => (
                       <div
                         key={index}
                         className={`job-item ${selectedInternship === internship ? 'selected' : ''}`}

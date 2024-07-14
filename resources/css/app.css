@@ -179,11 +179,30 @@ strong{
     height: 25px;
     width: auto;
 }
+.filter{
+    display: flex;
+    align-items: center;
+    
+    height: 20px;
+}
+.vertical-hr {
+    width: 2px;
+    height: 30px; /* Adjust height as needed */
+    background-color: black; /* Adjust color as needed */
+    border: none;
+   
+    margin-left: 10px;
+    
+}
 .searchresult{
    position: sticky;
    top: 0;
    padding: 17px;
    background-color: #77E4C8;
+}
+.navbarauth{
+    position: sticky;
+    top: 0;
 }
 .searchresult h3{
     font-weight: bold;

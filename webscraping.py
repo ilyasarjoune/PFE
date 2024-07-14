@@ -64,7 +64,19 @@ def transform_stagiaires(soup):
         
         date_tag = item.find('small', attrs={'title': 'Date début de stage'})
         datef = date_tag.text.strip() if date_tag else 'No date available'
+        paid = False
+        duration = 'No duration available'
+        type = 'No type available'
 
+        # Extract additional fields based on class names
+        for span in item.find_all('span', class_='btn'):
+            span_classes = span['class']
+            if 'btn-warning' in span_classes:
+                paid = True
+            if 'btn-danger' in span_classes:
+                duration = span.text.strip()
+            if 'btn-primary' in span_classes:
+                intertype = span.text.strip()
         # Categorize the job based on the title
         domain = categorize_job(title)
 
@@ -76,6 +88,9 @@ def transform_stagiaires(soup):
             'date': datef,
             'link': href,
             'domain': domain,
+            'paid': paid,
+            'duration': duration,
+            'type': intertype,
             
         }
         job_list.append(job)

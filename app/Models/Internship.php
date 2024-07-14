@@ -8,7 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Internship extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'company', 'location', 'date', 'link' , 'domain', 'description' , 'applies'];
+
+    protected $fillable = [
+        'title', 
+        'company', 
+        'location', 
+        'date', 
+        'link', 
+        'domain', 
+        'description', 
+        'applies', 
+        'paid',       // New field
+        'duration',   // New field
+        'type'        // New field
+    ];
+
     protected static function boot()
     {
         parent::boot();
@@ -26,6 +40,7 @@ class Internship extends Model
             }
         });
     }
+
     protected $guarded = ['id'];
 
     public $timestamps = true;

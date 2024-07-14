@@ -10,10 +10,10 @@ use Inertia\Inertia;
 class StoreWebScrapingDataController extends Controller
 {
     public function index()
-{
-    
+    {
+        // Your existing code for index method
+    }
 
-}
     public function store(Request $request)
     {
         try {
@@ -41,6 +41,9 @@ class StoreWebScrapingDataController extends Controller
                         'link' => $internship['link'],
                         'domain' => $internship['domain'],
                         'description' => $internship['description'],
+                        'paid' => $internship['paid'] ?? false, // New field with default value false if not set
+                        'duration' => $internship['duration'] ?? null, // New field with default value null if not set
+                        'type' => $internship['type'] ?? null, // New field with default value null if not set
                     ]);
                 } else {
                     // Handle duplicate entry scenario if needed
@@ -58,6 +61,4 @@ class StoreWebScrapingDataController extends Controller
             return response()->json(['error' => 'Internal Server Error', 'message' => $e->getMessage()], 500);
         }
     }
-    
-
 }
