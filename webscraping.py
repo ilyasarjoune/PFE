@@ -100,7 +100,7 @@ def transform_stagiaires(soup):
 # Loop through pages and extract data from stagiaires.ma
 all_job_data = []
 
-for page in range(1, 40):
+for page in range(1, 100):
     print(f'Extracting page {page} from stagiaires.ma...')
     stagiaires_soup = extract_stagiaires(page)
     stagiaires_job_data = transform_stagiaires(stagiaires_soup)

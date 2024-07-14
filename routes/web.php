@@ -5,6 +5,7 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\StoreWebScrapingDataController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -41,6 +42,20 @@ Route::middleware('auth')->group(function () {
 
 // Route for internships
 Route::get('/internships', [StoreWebScrapingDataController::class, 'index']);
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+
+    Route::prefix('admin')->group(function () {
+        Route::get('users', [AdminController::class, 'showUsers'])->name('admin.users');
+       // Route::get('companies', [AdminController::class, 'showCompanies'])->name('admin.companies');
+        Route::get('internships', [AdminController::class, 'showInternships'])->name('admin.internships');
+        Route::delete('users/{id}', [AdminController::class, 'deleteUser'])->name('admin.deleteUser');
+       // Route::delete('companies/{id}', [AdminController::class, 'deleteCompany'])->name('admin.deleteCompany');
+        Route::delete('internships/{id}', [AdminController::class, 'deleteInternship'])->name('admin.deleteInternship');
+    });
+});
+
 
 // Auth routes
 require __DIR__.'/auth.php';

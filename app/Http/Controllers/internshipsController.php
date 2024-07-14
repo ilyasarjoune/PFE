@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Internship;
+use App\Models\Domaine;
 use App\Http\Requests\StoreInternshipRequest;
 use App\Http\Requests\UpdateInternshipRequest;
 use Inertia\Inertia;
@@ -12,9 +13,30 @@ class internshipsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $internships = Internship::all();
+        $user = $request->user();
+    
+        // Check if the user is an admin (assuming is_admin is a field in your user model)
+        if ($user->is_admin) {
+            $internships = Internship::all(); // Fetch all internships
+        } else {
+            $userDomainId = $user->domaines_id; // Assuming the user has a domaines_id field
+    
+            // Fetch domain name for the user's domain ID
+            $userDomainName = Domaine::where('id', $userDomainId)->value('name');
+    
+            // Query internships
+            $query = Internship::query();
+    
+            // Filter by user's domain name
+            if ($userDomainName) {
+                $query->where('domain', $userDomainName);
+            }
+    
+            $internships = $query->get();
+        }
+    
         return Inertia::render('Home/Index', ['internships' => $internships]);
     }
 

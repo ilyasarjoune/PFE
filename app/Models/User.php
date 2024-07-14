@@ -24,7 +24,11 @@ class User extends Authenticatable
         'cv_path',
         'password',
     ];
-
+    public function isAdmin()
+    {
+        return $this->is_admin;
+    }
+    
     /**
      * The attributes that should be hidden for serialization.
      *
