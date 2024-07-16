@@ -16,7 +16,13 @@ class AdminController extends Controller
     }
     public function dashboard()
     {
-        return inertia('Admin/Dashboard');
+        $userCount = User::count();
+        $internshipCount = Internship::count();
+
+        return inertia('Admin/Dashboard', [
+            'userCount' => $userCount,
+            'internshipCount' => $internshipCount
+        ]);
     }
   /*  public function showCompanies()
     {

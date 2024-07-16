@@ -51,7 +51,7 @@ export default function Index({ auth, internships, noResults }) {
       noResults={noResults}
       header={
         <div className='filter'>
-          <div className="dropdown rounded-lg">
+          <div className="dropdown flex items-center rounded-lg">
             <button className="btn btn-outline-success rounded-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               Paid
             </button>
@@ -60,9 +60,11 @@ export default function Index({ auth, internships, noResults }) {
               <li><a className="dropdown-item" href="#" onClick={() => setFilterPaid(1)}>Yes</a></li>
               <li><a className="dropdown-item" href="#" onClick={() => setFilterPaid(0)}>No</a></li>
             </ul>
+            <hr className="vertical-hr"></hr>
           </div>
+          
           <div className="dropdown rounded-lg">
-            <button className="btn btn-outline-success rounded-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button className="btn btn-outline-primary rounded-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               Duration
             </button>
             <ul className="dropdown-menu">
@@ -73,7 +75,7 @@ export default function Index({ auth, internships, noResults }) {
             </ul>
           </div>
           <div className="dropdown rounded-lg">
-            <button className="btn btn-outline-success rounded-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button className="btn btn-outline-info rounded-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               Type
             </button>
             <ul className="dropdown-menu">
@@ -83,7 +85,7 @@ export default function Index({ auth, internships, noResults }) {
               ))}
             </ul>
           </div>
-          <hr className="vertical-hr"></hr>
+          
         </div>
       }
     >

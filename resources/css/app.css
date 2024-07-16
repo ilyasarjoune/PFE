@@ -50,17 +50,12 @@
    
     background-color: hsl(0, 0%, 92%);
 }
-.job-item h4{
-font-weight:bold;
-font-size: 16px;
 
-color: #0077ff;
-}
 .job-item h4{
     font-weight:bold;
     font-size: 16px;
-    
-    color: #1E86FF;
+    font-family: 'Volkhov';
+    color: #2d3ca8;
     }
 .job-item p:nth-child(2){
     font-weight: 500;
@@ -182,8 +177,13 @@ strong{
 .filter{
     display: flex;
     align-items: center;
-    
+    justify-content: space-between;
+    width:40%;
     height: 20px;
+}
+.btn{
+    width: 140px;
+    border-radius:25px ;
 }
 .vertical-hr {
     width: 2px;
@@ -192,6 +192,7 @@ strong{
     border: none;
    
     margin-left: 10px;
+    margin-right: 10px;
     
 }
 .searchresult{
@@ -201,8 +202,7 @@ strong{
    background-color: #77E4C8;
 }
 .navbarauth{
-    position: sticky;
-    top: 0;
+    
 }
 .searchresult h3{
     font-weight: bold;
@@ -278,4 +278,82 @@ strong{
     to {
         transform: rotate(360deg);
     }
+}
+.guestlogo{
+    position:absolute;
+    left: 0;
+    top: 0;
+    padding: 15px;
+}
+.custom-btn{
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: #1E86FF;
+    height: 40px;
+    border-radius:15px ;
+}
+.authdesign h2{
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: larger;
+
+}
+.authdesign p{
+    color: grey;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+.authdesign p:nth-child(2){
+margin-bottom: 30px;
+}
+.authdesign a{
+    color: #0077ff;
+    font-weight: 600;
+}
+.custuminput{
+    border: 1px solid rgba(128, 128, 128, 0.374);
+    height: 40px;
+    padding-left: 14px;
+    border-radius:5px ;
+}
+.custuminput:focus{
+    border-color: #007bff;
+    outline: none;
+}
+.search{
+    border: 1px solid #cecdcdf6;
+    border-radius:20px 0 0 0px ;
+    background-color: #a5aaae34;
+}
+.search::placeholder{
+    color: rgb(113, 113, 113);
+    font-size: 12px;
+}
+.searchbtn{
+    width: 40px;
+    color: white;
+    border-radius:0 0px 20px 0 ;
+    background-color: #0077ff;
+}
+.searchbtn:hover{
+    width: 40px;
+    color: rgb(146, 132, 132);
+    border-radius:0 0px 20px 0 ;
+    background-color: #0077ff73;
+}
+.search-bar{
+    position: absolute;
+    left: 99vh;
+}
+.navlinks{
+    
+    font-weight: 700;
+    font-size: small;
+    font-family: 'Volkhov';
+}
+.navlinks:hover{
+    text-shadow: 1px 1px 2px grey;
+    color: #1E86FF;
 }

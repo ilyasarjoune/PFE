@@ -32,10 +32,10 @@ export default function Authenticated({ user, header, children, noResults }) {
                                 </Link>
                             </div>
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <NavLink href={route('internship.index')} active={route().current('internship.index')}>
+                                <NavLink className='navlinks' href={route('internship.index')} active={route().current('internship.index')}>
                                     Internships
                                 </NavLink>
-                                <NavLink href={route('dashboard')} active={route().current('dashboard')}>
+                                <NavLink className='navlinks' href={route('dashboard')} active={route().current('dashboard')}>
                                     Company Reviews
                                 </NavLink>
                             </div>
@@ -46,15 +46,15 @@ export default function Authenticated({ user, header, children, noResults }) {
                                     type="text"
                                     value={searchString}
                                     onChange={handleInputChange}
-                                    placeholder="Search by title, location, domain"
-                                    className="border rounded p-1"
+                                    placeholder="Search"
+                                    className="search"
                                 />
-                                <button onClick={handleSearch} className="p-1 ms-2 bg-blue-500 text-white rounded">
-                                    Search
+                                <button onClick={handleSearch} className="searchbtn">
+                                <i class="fa-solid fa-magnifying-glass"></i>
                                 </button>
                             </div>
 
-                            <Notification userId={user.id} />
+                            
 
                             <div className="ms-3 relative">
                                 <Dropdown>
@@ -62,7 +62,7 @@ export default function Authenticated({ user, header, children, noResults }) {
                                         <span className="inline-flex rounded-md">
                                             <button
                                                 type=""
-                                                className="inline-flex items-center px-3 py-2  border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
+                                                className="inline-flex items-center px-3 py-2  border-transparent text-sl leading-4 font-medium rounded-md text-gray-900 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
                                             >
                                                 {user.name}
                                                 <svg

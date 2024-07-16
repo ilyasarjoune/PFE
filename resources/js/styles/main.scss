@@ -35,9 +35,24 @@ body {
     width: 40vh;
 
 }
-.cardinter h1{
-    
+.cardinter h2{
+font-weight: 600; 
+padding-bottom: 5px;
 
+
+}
+.cardinter h3{
+    font-weight: bold;
+    font-size: 14px;
+    color: rgb(3, 121, 248); 
+    
+    padding-bottom: 5px;
+    }
+.drop{
+    position: absolute;
+    right: 0;
+    top: 0;
+    
 }
 
 h1 {
@@ -47,7 +62,6 @@ h1 {
 }
 
 .sidebar {
-    display: sticky;
     background-color: $white;
     position: absolute;
     top: 0;
@@ -56,7 +70,6 @@ h1 {
     width: 17rem;
     height: 100vh;
     transition: 0.5s all;
-
     .logoContainer {
         display: flex;
         align-items: center;

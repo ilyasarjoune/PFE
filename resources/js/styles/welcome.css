@@ -1,0 +1,268 @@
+
+
+.logo-w{
+    padding:20px;
+    height: 80px;
+    width: auto;
+}
+.blue{
+    position: absolute;
+    height:170px ;
+    width: 320px;
+    right: 0px;
+    top: 0px;
+    background-color: #3E8DFA;
+    border: 1px solid  #3E8DFA;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 1500px  1100px ;
+}
+.navbar-w{
+    position: relative;
+    display: flex;
+    
+}
+.links{
+    margin-left: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.links a{
+    margin-left: 10vh;
+    font-weight: bold;
+    transition: 0.4s;
+    
+}
+.links a:hover{
+    text-shadow: 2px 2px 9px grey;
+    
+}
+#join{
+    position: absolute;
+    right: 200px;font-weight: bold;
+    top: 30px;
+    color: rgb(255, 255,255);
+    transition: 0.4s;
+
+}
+#join:hover{
+    text-shadow: 2px 2px 9px white;
+}
+#sign:hover{
+    box-shadow: 1px 2px 09px white;
+}
+#sign{
+    position: absolute;
+    right: 60px;
+    font-weight: bold;
+    top: 22px;
+    border: 1px solid white;
+    background-color: white;
+    color: #3E8DFA;
+    transition: 0.6s;
+    
+    border-radius: 10px;
+    width: 100px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+.intro{
+    
+    display: flex;
+    
+    align-items: center;
+    
+    
+}
+.inter{
+    margin-left: 20vh;
+    height: 450px;
+    width: auto;
+}
+.text-w{
+    width: auto;
+    margin-left: 10vh;
+
+}
+.text-w p{
+    font-weight: 1000;
+    font-family: 'Volkhov';
+    color: #181E4B;
+    font-size: 70px;
+    
+}
+.text-w p:nth-child(3){
+    margin-top: -30px;
+}
+.text-w p:nth-child(4){
+    color:#5E6282 ;
+    max-width: 280px;
+    font-size: 13px;
+    position: absolute;
+    left: 200px;
+    font-weight: 200;
+    
+}
+.text-w a{
+    
+    position: absolute;
+    left: 40vh;
+    top: 73vh;
+    font-weight: bold;
+   font-size: 12px;
+   
+    background-color: #3E8DFA;
+    color: white;
+    
+    border-radius: 10px;
+    width: 100px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.4s;
+}
+.text-w a:hover{
+    box-shadow: 1px 2px 09px #3E8DFA;
+}
+.ddd{
+    position:absolute;
+    height: 10px;
+    width: 170px;
+    top: 45vh;
+    left: 50vh;
+}
+.services{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20vh;
+    padding-bottom: 50px;
+}
+.services h3 , .title-ab {
+    font-weight: bold ;
+    color: #5E6282;
+}
+.services h2 , .about h1{
+    font-weight: bold ;
+    color: #181E4B;
+    font-size: 40px;
+    margin-top:20px ;
+    font-family: 'Volkhov';
+}
+.cards{
+    margin-top: 70px;
+    display: flex;
+    justify-content: space-between;
+    
+    width: 70%;
+}
+.cardimg{
+    height: 120px;
+    width: auto;
+}
+.cardinfo{
+    padding: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 240px;
+    cursor: pointer;
+    border-radius: 20px;
+    box-shadow: 2px 3px 4px lightgray;
+    transition: 0.4s;
+}
+.cardinfo:hover{
+    margin-bottom: 20px;
+}
+
+.cardinfo h2{
+    font-size: medium;
+}
+.cardinfo p{
+    color:#5E6282 ;
+    max-width: 150px;
+    font-size: 15px;
+    
+    font-weight: 200;
+}
+.about{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;  
+    padding: 100px;
+}
+.aboutcontent{
+    display: flex;
+    border: 1px solid #80808026;
+    width: 100%;
+    justify-content: space-between;
+    border-radius: 50px;
+    box-shadow: 4px 4px 4px grey ;
+    transition: 0.5s;
+}
+
+
+.aboutcontent img{
+    height: 80vh;
+    width: auto;
+    border-radius: 50px;
+}
+.about-text{
+    display: block;
+    width: 80vh;
+    padding: 30px;
+}
+.about-text p{
+    font-weight: 500;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    
+}
+.about-text span{
+    font-weight: 600;
+    color: #3E8DFA;
+}
+footer{
+    display: flex;
+    
+    justify-content: space-between;
+    padding: 20px;
+}
+footer div{
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+}
+footer span{
+    font-size: large;
+    font-weight: 600;
+}
+footer p{
+    width: 170px;
+    color: grey;
+}
+footer h2{
+    font-size: 34px;
+    color: #181E4B;
+    font-weight: 600;
+}
+footer a {
+    color: #3E8DFA;
+}
+.social{
+    display: flex;
+    width: 150px;
+    
+    justify-content: space-between;
+    padding: 20px;
+}

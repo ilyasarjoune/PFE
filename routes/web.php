@@ -4,8 +4,8 @@ use App\Http\Controllers\InternshipsController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\StoreWebScrapingDataController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
 use App\Http\Controllers\AdminController;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -14,16 +14,23 @@ Route::get('/domaines', [DomaineController::class, 'index'])->name('domaines.ind
 
 // Route for the Welcome page
 Route::get('/', function () {
+    if (auth()->check() ) {
+        if (auth()->user()->is_admin) {
+            return redirect('/admin');
+        }
+        return redirect('/internship');
+    }
+    
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});
-Route::redirect('/', '/internship')->middleware(['auth', 'verified']);
+})->name('welcome');
+
 // Group routes that require authentication and email verification
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified', \App\Http\Middleware\AdminMiddleware::class])->group(function () {
     Route::get('/dashboard', fn () => Inertia::render('Dashboard'))->name('dashboard');
     
     Route::resource('internship', InternshipsController::class);
@@ -43,19 +50,19 @@ Route::middleware('auth')->group(function () {
 // Route for internships
 Route::get('/internships', [StoreWebScrapingDataController::class, 'index']);
 
+// Admin routes
 Route::middleware(['auth', 'admin'])->group(function () {
+    Route::redirect('/internships' , '/admin');
     Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 
     Route::prefix('admin')->group(function () {
         Route::get('users', [AdminController::class, 'showUsers'])->name('admin.users');
-       // Route::get('companies', [AdminController::class, 'showCompanies'])->name('admin.companies');
         Route::get('internships', [AdminController::class, 'showInternships'])->name('admin.internships');
         Route::delete('users/{id}', [AdminController::class, 'deleteUser'])->name('admin.deleteUser');
-       // Route::delete('companies/{id}', [AdminController::class, 'deleteCompany'])->name('admin.deleteCompany');
         Route::delete('internships/{id}', [AdminController::class, 'deleteInternship'])->name('admin.deleteInternship');
     });
 });
 
-
 // Auth routes
 require __DIR__.'/auth.php';
+require __DIR__.'/company-auth.php';

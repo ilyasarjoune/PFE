@@ -50,12 +50,14 @@ export default function Register() {
             <Head title="Register" />
 
             <form onSubmit={submit}>
+            <div className='authdesign'>
+                <h2>Sign up</h2>
+                <p>Stay updated on your professional world</p>
                 <div>
-                    <InputLabel htmlFor="name" value="Name" />
 
                     <TextInput
                         id="name"
-                        name="name"
+                        name="name" placeholder="name"
                         value={data.name}
                         className="mt-1 block w-full"
                         autoComplete="name"
@@ -67,11 +69,10 @@ export default function Register() {
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel htmlFor="email" value="Email" />
 
                     <TextInput
                         id="email"
-                        type="email"
+                        type="email" placeholder="E-mail"
                         name="email"
                         value={data.email}
                         className="mt-1 block w-full"
@@ -83,14 +84,13 @@ export default function Register() {
                     <InputError message={errors.email} className="mt-2" />
                 </div>
                 <div className="mt-4">
-                    <InputLabel htmlFor="phone" value="Phone" />
 
                     <TextInput
                         id="phone"
-                        type="phone"
+                        type="phone" placeholder="phone"
                         name="phone"
                         value={data.phone}
-                        className="mt-1 block w-full"
+                        className="mt-1 block w-full custuminput"
                         autoComplete="phone"
                         onChange={(e) => setData('phone', e.target.value)}
                         required
@@ -100,11 +100,10 @@ export default function Register() {
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Password" />
 
                     <TextInput
                         id="password"
-                        type="password"
+                        type="password" placeholder="password"
                         name="password"
                         value={data.password}
                         className="mt-1 block w-full"
@@ -117,11 +116,10 @@ export default function Register() {
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel htmlFor="password_confirmation" value="Confirm Password" />
 
                     <TextInput
                         id="password_confirmation"
-                        type="password"
+                        type="password" placeholder="confirm password"
                         name="password_confirmation"
                         value={data.password_confirmation}
                         className="mt-1 block w-full"
@@ -134,13 +132,12 @@ export default function Register() {
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel htmlFor="domaines_id" value="Domain" />
 
                     <SelectInput
                         id="domaines_id"
                         name="domaines_id"
                         value={data.domaines_id}
-                        className="mt-1 block w-full"
+                        className="mt-1 block w-full custuminput"
                         onChange={(e) => setData('domaines_id', e.target.value)}
                         required
                     >
@@ -155,18 +152,18 @@ export default function Register() {
                     <InputError message={errors.domaines_id} className="mt-2" />
                 </div>
 
-                <div className="flex items-center justify-end mt-4">
-                    <Link
-                        href={route('login')}
-                        className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    >
-                        Already registered?
-                    </Link>
+                <div className="flex items-center justify-center mt-4">
+                    
 
-                    <PrimaryButton className="ms-4" disabled={processing}>
+                    <PrimaryButton className=" custom-btn" disabled={processing}>
                         Register
                     </PrimaryButton>
+                </div>           
+                <div className='flex items-center justify-center mt-4'>
+                <p>By clicking Continue, you agree to Easyinter’s <a href="">User agreement</a>,  <a href="">Privacy Policy</a> and <a href="">Cookie Policy</a></p>
                 </div>
+                     </div>
+
             </form>
         </GuestLayout>
     );
