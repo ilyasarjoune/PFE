@@ -31,9 +31,15 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
 
-        $request->session()->regenerate();
+    $request->session()->regenerate();
 
-        return redirect()->intended(route('internship.index', absolute: false));
+    $user = auth()->user();
+
+    if ($user->is_admin) {
+        return redirect()->route('admin.dashboard');
+    }
+
+    return redirect()->intended(route('internship.index', absolute: false));
     }
 
     /**

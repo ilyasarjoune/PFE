@@ -357,3 +357,15 @@ margin-bottom: 30px;
     text-shadow: 1px 1px 2px grey;
     color: #1E86FF;
 }
+#btn{
+    width: 300px;
+    background-color: #282c34bb;
+    border-color:#282c34 ;
+    color: white;
+}
+#btn:hover{
+    background-color: #ffffff;
+    border-color:#282c34 ;
+    color: #282c34;
+
+}

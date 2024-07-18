@@ -1,6 +1,8 @@
 // resources/js/Layouts/AdminLayout.jsx
 import logo from '../images/logoname.png'
 import logod from '../images/logosdisgn.png'
+import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
+
 import React, { useState } from 'react';
 import { Link, usePage } from '@inertiajs/react'; // Corrected import
 import "../styles/main.scss";
@@ -49,6 +51,14 @@ const AdminLayout = ({ children }) => {
                         <li className={route('admin.internships') ? 'active' : ''}>
                             <Link href={route('admin.internships')}><i class="fa-solid fa-briefcase"></i> &nbsp;Internships</Link>
                         </li>
+                        <li className={route('admin.company') ? 'active' : ''}>
+                            <Link href={route('admin.company')}><i class="fa-solid fa-briefcase"></i> &nbsp;Companies</Link>
+                        </li>
+                        <li className={route('admin.requests') ? 'active' : ''}>
+                            <Link href={route('admin.requests')}><i class="fa-solid fa-briefcase"></i> &nbsp;Requested Offers</Link>
+                        </li>
+
+                        
                         {/* Add more sidebar items as needed */}
                     </ul>
                 </div>

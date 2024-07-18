@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Internship;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Auth;
 
 class CompanieController extends Controller
 {
@@ -14,7 +16,14 @@ class CompanieController extends Controller
     {
         return Inertia::render('Company/offers');
     }
-
+    public function getPostedOffers()
+{
+    $companyName = Auth::user()->name; // Assuming the company name is stored in the user model
+    
+    $internships = Internship::where('company', $companyName)->get();
+    
+     return inertia('Company/offers', ['internships' => $internships]);
+}
     /**
      * Show the form for creating a new resource.
      */

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Company;
 use App\Models\Internship;
+use App\Models\OfferRequest;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -18,22 +19,29 @@ class AdminController extends Controller
     {
         $userCount = User::count();
         $internshipCount = Internship::count();
+        $Companycount = Company::count();
 
         return inertia('Admin/Dashboard', [
             'userCount' => $userCount,
-            'internshipCount' => $internshipCount
+            'internshipCount' => $internshipCount,
+            'CompanyCount' => $Companycount
         ]);
     }
-  /*  public function showCompanies()
+    public function showCompanies()
     {
-        $companies = Company::all();
-        return inertia('Admin/Companies', ['companies' => $companies]);
-    }*/
+        $company = Company::all();
+        return inertia('Admin/Company', ['company' => $company]);
+    }
 
     public function showInternships()
     {
         $internships = Internship::all();
         return inertia('Admin/Internships', ['internships' => $internships]);
+    }
+    public function showRequestedOfferrs()
+    {
+        $RequestedOfferrs = OfferRequest::all();
+        return inertia('Admin/requests', ['OfferRequests' => $RequestedOfferrs]);
     }
 
     public function deleteUser($id)
@@ -42,11 +50,11 @@ class AdminController extends Controller
         return redirect()->route('admin.users');
     }
 
-    /*public function deleteCompany($id)
+    public function deleteCompany($id)
     {
         Company::findOrFail($id)->delete();
-        return redirect()->route('admin.companies');
-    }*/
+        return redirect()->route('admin.company');
+    }
 
     public function deleteInternship($id)
     {

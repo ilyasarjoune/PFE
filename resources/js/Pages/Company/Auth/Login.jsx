@@ -94,9 +94,11 @@ export default function Login({ status, canResetPassword }) {
                     <PrimaryButton className=" custom-btn" disabled={processing}>
                         Sign in
                     </PrimaryButton>
+                    
                 </div>
                
                 </div>
+                <a href={route('company.register')} className='flex items-center justify-center my-2 font-bold text-blue-600'>New to Easyinter, Join us</a>
             </form>
             
            

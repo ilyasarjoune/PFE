@@ -23,9 +23,11 @@
     "dependencies": {
         "@inertiajs/inertia": "^0.11.1",
         "@inertiajs/inertia-react": "^0.8.1",
+        "bootstrap": "^5.3.3",
         "datatables.net": "^2.0.8",
         "datatables.net-dt": "^2.0.8",
         "jquery": "^3.7.1",
+        "react-bootstrap": "^2.10.4",
         "react-modal": "^3.16.1"
     }
 }

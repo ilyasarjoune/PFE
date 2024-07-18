@@ -1,0 +1,51 @@
+  const handleButtonClick = () => {
+        if (!isClassSwapped) {
+            setIsClassSwapped(true);
+        }else{
+            setIsClassSwapped(false);
+        }
+    };
+    <div className="btn-group my-6" role="group" aria-label="Basic example">
+                             <button 
+                                type="button" 
+                                className={isClassSwapped ? "btn btn-outline-secondary" : "btn btn-dark"}
+                                onClick={handleButtonClick}
+                             >
+                                Open
+                             </button>
+                             <button 
+                                type="button" 
+                                className={isClassSwapped ? "btn btn-dark" : "btn btn-outline-secondary"}
+                                onClick={handleButtonClick}
+                             >
+                                Close
+                             </button>
+                             
+                        </div>
+                        <button 
+                                    type="button" 
+                                    className={isClassSwapped ? "btn btn-outline-secondary" : "btn btn-dark"}
+                                    onClick={handleButtonClick}
+                                >
+                                    Open
+                                </button>
+                                <button 
+                                    type="button" 
+                                    className={isClassSwapped ? "btn btn-dark" : "btn btn-outline-secondary"}
+                                    onClick={handleButtonClick}
+                                >
+                                    Close
+                                </button>
+                                <button 
+                                type="button" 
+                                id='btn'
+                                className="btn btn btn-outline-primary"
+                                onClick={handleRequestedOffersClick}
+                            >
+                                Requested Offers
+                            </button>
+
+
+
+                            <h5 className="card-title text-2xl font-bold">{offer.title}</h5>
+                              <p className="card-text mb-4">{offer.description}</p>

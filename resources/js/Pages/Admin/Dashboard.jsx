@@ -10,9 +10,9 @@ const Dashboard = ({ userCount, internshipCount }) => {
 
   return (
     <AdminLayout>
-    <h1><i className="fa-solid fa-tachometer-alt"></i> Dashboard</h1>
-    <div className="row">
-      <div className="col-lg-6 col-md-6 col-sm-12">
+    <h1><i className="fa-solid fa-tachometer-alt mx-6"></i> Dashboard</h1>
+    <div className="row p-16">
+      <div className="col-lg-4 col-md-3 mx-16 col-sm-12">
         <div className="card text-white bg-primary mb-3">
           <div className="card-header">Users</div>
           <div className="card-body">
@@ -21,7 +21,7 @@ const Dashboard = ({ userCount, internshipCount }) => {
           </div>
         </div>
       </div>
-      <div className="col-lg-6 col-md-6 col-sm-12">
+      <div className="col-lg-4 col-md-6 col-sm-12">
         <div className="card text-white bg-success mb-3">
           <div className="card-header">Internships</div>
           <div className="card-body">

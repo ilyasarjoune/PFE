@@ -41,6 +41,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                         
                                         <a href={route('login')} id='sign'>sign in</a>
                                         <a href={route('register')}id='join'>Join now</a>
+                                        <a href={route('company.login')} id='signcompany'>Post offer</a>
                                     </>
                                 )}
         
@@ -75,7 +76,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
 
                 </div>
-            </div>
+            </div> 
 <div className="about" id='about'>
     <p className='title-ab'>About us</p>
     <div className="aboutcontent">

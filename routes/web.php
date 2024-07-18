@@ -1,10 +1,10 @@
 <?php
 use App\Http\Controllers\DomaineController;
 use App\Http\Controllers\InternshipsController;
-use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\StoreWebScrapingDataController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\OfferController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -18,7 +18,7 @@ Route::get('/', function () {
         if (auth()->user()->is_admin) {
             return redirect('/admin');
         }
-        return redirect('/internship');
+        return redirect('/');
     }
     
     return Inertia::render('Welcome', [
@@ -58,8 +58,13 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('users', [AdminController::class, 'showUsers'])->name('admin.users');
         Route::get('internships', [AdminController::class, 'showInternships'])->name('admin.internships');
+        Route::get('companie', [AdminController::class, 'showCompanies'])->name('admin.company');
+        Route::get('offersrequests', [AdminController::class, 'showRequestedOfferrs'])->name('admin.requests');
         Route::delete('users/{id}', [AdminController::class, 'deleteUser'])->name('admin.deleteUser');
         Route::delete('internships/{id}', [AdminController::class, 'deleteInternship'])->name('admin.deleteInternship');
+        Route::delete('companie/{id}', [AdminController::class, 'deleteCompany'])->name('admin.deletecompany');
+        Route::post('offersrequests/{id}/accept', [OfferController::class, 'accept'])->name('offerRequests.accept');
+        Route::post('offersrequests/{id}/refuse', [OfferController::class, 'refuse'])->name('offerRequests.refuse');
     });
 });
 

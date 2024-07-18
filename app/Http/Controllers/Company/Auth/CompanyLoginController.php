@@ -47,6 +47,6 @@ class CompanyLoginController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/company');
+        return redirect('/');
     }
 }
