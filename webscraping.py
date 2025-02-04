@@ -41,7 +41,7 @@ def categorize_job(title):
 # Extract from stagiaires.ma
 def extract_stagiaires(page):
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36'}
-    url = f'https://www.stagiaires.ma/offres-stages/{page}'
+    url = f'https://www.stagiaires.ma/offres-de-stages-et-premier-emploi-maroc/{page}'
     r = requests.get(url, headers=headers)
     soup = BeautifulSoup(r.content, 'html.parser')
     return soup
@@ -100,7 +100,7 @@ def transform_stagiaires(soup):
 # Loop through pages and extract data from stagiaires.ma
 all_job_data = []
 
-for page in range(1, 100):
+for page in range(1, 10):
     print(f'Extracting page {page} from stagiaires.ma...')
     stagiaires_soup = extract_stagiaires(page)
     stagiaires_job_data = transform_stagiaires(stagiaires_soup)
