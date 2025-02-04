@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\Auth;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Company;
 use App\Models\Internship;
@@ -10,11 +11,14 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    
+
     public function showUsers()
     {
         $users = User::all();
         return inertia('Admin/Users', ['users' => $users]);
     }
+
     public function dashboard()
     {
         $userCount = User::count();
@@ -27,6 +31,7 @@ class AdminController extends Controller
             'CompanyCount' => $Companycount
         ]);
     }
+
     public function showCompanies()
     {
         $company = Company::all();
@@ -38,6 +43,7 @@ class AdminController extends Controller
         $internships = Internship::all();
         return inertia('Admin/Internships', ['internships' => $internships]);
     }
+
     public function showRequestedOfferrs()
     {
         $RequestedOfferrs = OfferRequest::all();

@@ -1,9 +1,10 @@
 <?php
+// filepath: /c:/xampp/htdocs/PFE/routes/web.php
 use App\Http\Controllers\DomaineController;
 use App\Http\Controllers\InternshipsController;
 use App\Http\Controllers\StoreWebScrapingDataController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\Auth\AdminController;
 use App\Http\Controllers\OfferController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -14,13 +15,6 @@ Route::get('/domaines', [DomaineController::class, 'index'])->name('domaines.ind
 
 // Route for the Welcome page
 Route::get('/', function () {
-    if (auth()->check() ) {
-        if (auth()->user()->is_admin) {
-            return redirect('/admin');
-        }
-        return redirect('/');
-    }
-    
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
@@ -30,7 +24,7 @@ Route::get('/', function () {
 })->name('welcome');
 
 // Group routes that require authentication and email verification
-Route::middleware(['auth', 'verified', \App\Http\Middleware\AdminMiddleware::class])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', fn () => Inertia::render('Dashboard'))->name('dashboard');
     
     Route::resource('internship', InternshipsController::class);
@@ -51,8 +45,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/internships', [StoreWebScrapingDataController::class, 'index']);
 
 // Admin routes
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::redirect('/internships' , '/admin');
+Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 
     Route::prefix('admin')->group(function () {
@@ -71,3 +64,4 @@ Route::middleware(['auth', 'admin'])->group(function () {
 // Auth routes
 require __DIR__.'/auth.php';
 require __DIR__.'/company-auth.php';
+require __DIR__.'/admin.php';
